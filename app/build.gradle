@@ -1,0 +1,13 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'br.com.bravuz.editor'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'br.com.bravuz.editor'
+        minSdk 26
+        targetSdk 28
+        versionCode 4
+        versionName '0.4-test'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+}

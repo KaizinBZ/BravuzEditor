@@ -1,0 +1,21 @@
+BravuzEditor v0.4 — versão experimental
+
+Instalação: requer Android 8 ou superior. APK compilado e assinatura de teste verificada; NÃO foi testado em celular ou emulador. A chave desta versão é diferente da v0.3: para instalar, faça backup dos dados e desinstale a versão anterior (a desinstalação pode apagar dados do aplicativo). A chave temporária não está incluída; outras compilações com chave diferente também podem exigir desinstalação.
+
+Interface: seta superior para voltar sem exigir exportação; botão destacado da comunidade; ícones coloridos desenhados em código. Voltando da lista para a tela inicial a sessão continua aberta; ao abrir outro arquivo, alterações não exportadas serão perdidas depois de confirmação. Mudanças no editor de texto precisam ser aplicadas à cópia de trabalho antes de sair dessa tela ou são descartadas.
+
+Aplicativo instalado: mostra apps visíveis/abertos pelo launcher segundo o Android e tenta copiar o APK base para a área de trabalho. Não modifica o aplicativo instalado ou seus dados diretamente. Alguns APKs instalados podem não ser acessíveis. APKs divididos têm vários componentes: a versão 0.4 abre apenas o base e informa se detecta os demais; não os exporta. Nem todos os aplicativos aparecem por restrições do Android, perfil de usuário, fabricante ou da lista. Não foi testado em aparelho.
+
+Seletor de arquivo: arquivo individual ou APK/ZIP. Pastas reais não podem ser selecionadas diretamente; compacte a source/pasta em ZIP para navegar. Após seleção: edição simples, média, profissional e análises.
+
+Simples: renomeia a cópia exportada e lista imagens para visualização/substituição. NÃO altera automaticamente o nome visível ou ícone instalados de um APK.
+Média: percorre pastas em APK/ZIP e permite adicionar, visualizar, editar texto UTF-8, substituir, renomear ou excluir arquivos.
+Profissional: lista caminhos e tamanhos com as mesmas operações; não decodifica recursos binários ou smali. Lista até 1.000 entradas; use a navegação média para as demais.
+Texto: UTF-8 até 2 MiB, inclusive .pwn/.inc; não compila Pawn e não edita .amx binário.
+Análises: verificação básica de abertura e contagens; não é análise de segurança, assinatura, compilação nem detecção geral de erros.
+
+Limites: seleção de até 300 MiB (314.572.800 bytes) e até 300 MiB descompactados no conjunto; até 30.000 entradas. Cópias temporárias no armazenamento interno podem exigir espaço extra para o original, arquivos descompactados e alterações. O aparelho pode impor limites adicionais. Até 1.000 itens por pasta e 500 imagens exibidos.
+
+Salvar cria cópia no local escolhido. Alterações não são preservadas automaticamente se o app fechar; exporte antes de sair. A exportação de APK remove assinaturas antigas; NÃO está pronta para instalar. Pode ser necessário reconstruir, alinhar e assinar com ferramentas apropriadas. Alterações inadequadas podem quebrar o APK. Faça backup e use somente arquivos que tenha autorização para modificar.
+
+Código: abra a pasta no Android Studio, com SDK 35 e plugin Gradle. Target SDK 28 é somente para teste; requer atualização e revisão antes de publicação.
