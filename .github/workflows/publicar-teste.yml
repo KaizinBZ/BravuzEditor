@@ -18,25 +18,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
-      - name: Testes unitários e compilar
+      - name: Testes unitários e build Android
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
-      - name: Teste do compilador Pawn no emulador
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 35
-          arch: x86_64
-          disable-animations: true
-          script: gradle --no-daemon :app:connectedDebugAndroidTest
-      - name: Testar compilador Pawn no emulador Android
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 35
-          arch: x86_64
-          disable-animations: true
-          script: gradle --no-daemon :app:connectedDebugAndroidTest
       - name: Publicar pré-lançamento de teste
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           cp app/build/outputs/apk/debug/app-debug.apk BravuzEditor-v0.8-pawn-beta.apk
-          gh release create v0.8-pawn-beta BravuzEditor-v0.8-pawn-beta.apk --target "$GITHUB_SHA" --title 'BravuzEditor v0.8 — compilador Pawn beta' --notes 'Beta experimental com compilador Pawn 3.10.10 integrado. Assinatura de debug; pode exigir desinstalar versões anteriores. Inclui compatibilidade -Z; adicione includes SA-MP/plugins ao ZIP da GM. Faça backup. Não é release oficial nem compilador validado no servidor.' --prerelease
+          gh release create v0.8-pawn-beta BravuzEditor-v0.8-pawn-beta.apk --target "$GITHUB_SHA" --title 'BravuzEditor v0.8 — compilador Pawn beta' --notes 'Beta experimental com compilador Pawn 3.10.10 integrado. Build e testes unitários aprovados; teste de compilação .pwn para .amx em aparelho/emulador ainda pendente. Assinatura debug: para instalar, pode ser necessário backup e desinstalar versões anteriores (os dados podem ser apagados). Inclui -Z; coloque includes SA-MP/plugins junto ao .pwn ou no ZIP da GM. Faça backup e teste em servidor de desenvolvimento. Não é release oficial.' --prerelease
