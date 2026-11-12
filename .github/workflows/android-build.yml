@@ -17,11 +17,15 @@ jobs:
       - uses: android-actions/setup-android@v4
         with:
           packages: 'platform-tools platforms;android-35 build-tools;35.0.0 ndk;27.0.12077973 cmake;3.22.1'
+          cmdline-tools-version: 15859902
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
       - name: Compilar APK de teste
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Verificar bibliotecas Pawn do APK
+        run: |
+          unzip -l app/build/outputs/apk/debug/app-debug.apk | grep -E 'lib/(arm64-v8a|armeabi-v7a|x86_64)/libbravuzpawn.so'
       - uses: actions/upload-artifact@v4
         with:
           name: BravuzEditor-apk-teste
