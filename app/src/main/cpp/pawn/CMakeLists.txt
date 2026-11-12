@@ -20,6 +20,6 @@ add_library(bravuzpawn SHARED
  ${LINUX/binreloc.c}
 )
 target_include_directories(bravuzpawn PRIVATE ${COMP} ${COMP}/hashtable ${AMX} ${LINUX} ${CMAKE_CURRENT_BINARY_DIR})
-target_compile_definitions(bravuzpawn PRIVATE LINUX BRAVUZ_ANDROID NO_MAIN NO_CODEPAGE)
+target_compile_definitions(bravuzpawn PRIVATE LINUX BRAVUZ_ANDROID NO_MAIN NO_CODEPAGE HAVE_ENDIAN_H=1)
 target_compile_options(bravuzpawn PRIVATE -fvisibility=hidden -Wno-implicit-function-declaration)
 target_link_libraries(bravuzpawn log)
