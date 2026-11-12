@@ -38,6 +38,13 @@
 # include <stdlib.h>
 #endif
 
+#if defined BRAVUZ_ANDROID
+  /* Android NDK clang exposes byte order through builtin predefined macros. */
+  #define __BYTE_ORDER __BYTE_ORDER__
+  #define __LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__
+  #define __BIG_ENDIAN __ORDER_BIG_ENDIAN__
+#endif
+
 #if defined __OpenBSD__ || defined __FreeBSD__
 # define __BYTE_ORDER    BYTE_ORDER
 # define __LITTLE_ENDIAN LITTLE_ENDIAN
