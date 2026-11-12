@@ -1302,9 +1302,11 @@ void parsesingleoption(char *argv)
   char codepage[MAXCODEPAGE+1] = { 0 };
   codepage[0] = '\0';
   parseoptions(2, args, NULL, NULL, NULL, NULL, codepage);
-  /* need explicit support for codepages */
+  /* Codepage conversion is disabled in the Android integration. */
+#if !defined NO_CODEPAGE
   if (codepage[0] && !cp_set(codepage))
     error(108);         /* codepage mapping file not found */
+#endif
 }
 
 #if !defined SC_LIGHT

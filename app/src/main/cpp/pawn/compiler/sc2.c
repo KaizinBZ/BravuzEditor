@@ -1139,8 +1139,10 @@ static int command(void)
               name[i]=*lptr;
             name[i]='\0';
           } /* if */
+#if !defined NO_CODEPAGE
           if (!cp_set(name))
             error(108);         /* codepage mapping file not found */
+#endif
         } else if (strcmp(str,"compress")==0) {
           cell val;
           preproc_expr(&val,NULL);
