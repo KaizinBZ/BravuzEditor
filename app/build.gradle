@@ -2,14 +2,18 @@ plugins { id 'com.android.application' }
 android {
     namespace 'br.com.bravuz.editor'
     compileSdk 35
+    ndkVersion "27.0.12077973"
     defaultConfig {
         applicationId 'br.com.bravuz.editor'
         minSdk 26
         targetSdk 28
-        versionCode 7
-        versionName '0.7-test'
+        versionCode 8
+        versionName '0.8-pawn-beta'
+        ndk { abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86_64' }
+        externalNativeBuild { cmake { arguments '-DANDROID_STL=c++_static' } }
     }
+    externalNativeBuild { cmake { path 'src/main/cpp/pawn/CMakeLists.txt'; version '3.22.1' } }
     compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
 }
 
-dependencies { testImplementation 'junit:junit:4.13.2' }
+dependencies { testImplementation 'junit:junit:4.13.2'; androidTestImplementation 'androidx.test:runner:1.6.2'; androidTestImplementation 'androidx.test.ext:junit:1.2.1' }

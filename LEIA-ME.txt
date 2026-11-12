@@ -19,3 +19,6 @@ Limites: seleção de até 300 MiB (314.572.800 bytes) e até 300 MiB descompact
 Salvar cria cópia no local escolhido. Alterações não são preservadas automaticamente se o app fechar; exporte antes de sair. A exportação de APK remove assinaturas antigas; NÃO está pronta para instalar. Pode ser necessário reconstruir, alinhar e assinar com ferramentas apropriadas. Alterações inadequadas podem quebrar o APK. Faça backup e use somente arquivos que tenha autorização para modificar.
 
 Código: abra a pasta no Android Studio, com SDK 35 e plugin Gradle. Target SDK 28 é somente para teste; requer atualização e revisão antes de publicação.
+
+
+Beta experimental v0.8: includes Pawn Compiler 3.10.10 built for Android. Select a .pwn or a ZIP of the GM and its includes, then export the generated .amx. Compilation runs locally; project code is not uploaded. Include directories from the selected .pwn and ZIP are added to Pawn's include search path. Compiler uses -Z compatibility. Does not verify server/plugin compatibility. SA-MP/open.mp plugin includes must be added to the ZIP by the user. Source and output are limited by app/storage limits. Test the .amx on a separate server and keep backups.

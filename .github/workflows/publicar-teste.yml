@@ -1,4 +1,4 @@
-name: Publicar versão de teste v0.7
+name: Publicar versão de teste v0.8
 on:
   workflow_dispatch:
 permissions:
@@ -12,14 +12,24 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Instalar NDK e CMake
+        run: sdkmanager 'ndk;27.0.12077973' 'cmake;3.22.1'
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
-      - name: Testar e compilar
+      - name: Testes unitários e compilar
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Testar compilador Pawn no emulador Android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          disable-animations: true
+          script: gradle --no-daemon :app:connectedDebugAndroidTest
       - name: Publicar pré-lançamento de teste
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk BravuzEditor-v0.7-teste.apk
-          gh release create v0.7-teste BravuzEditor-v0.7-teste.apk --target "$GITHUB_SHA" --title 'BravuzEditor v0.7 — teste' --notes 'Versão experimental para testar o aviso de atualização obrigatória. Não é versão oficial. A assinatura de teste é diferente da v0.6: faça backup e desinstale a anterior antes de instalar. Não há instalação silenciosa. APKs editados pelo aplicativo continuam sem assinatura.' --prerelease
+          cp app/build/outputs/apk/debug/app-debug.apk BravuzEditor-v0.8-pawn-beta.apk
+          gh release create v0.8-pawn-beta BravuzEditor-v0.8-pawn-beta.apk --target "$GITHUB_SHA" --title 'BravuzEditor v0.8 — compilador Pawn beta' --notes 'Beta experimental com compilador Pawn 3.10.10 integrado. Assinatura de debug; pode exigir desinstalar versões anteriores. Inclui compatibilidade -Z; adicione includes SA-MP/plugins ao ZIP da GM. Faça backup. Não é release oficial nem compilador validado no servidor.' --prerelease
