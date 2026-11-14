@@ -23,6 +23,9 @@ jobs:
           gradle-version: '8.7'
       - name: Compilar APK de teste
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Conferir bibliotecas do aplicativo
+        run: |
+          unzip -l app/build/outputs/apk/debug/app-debug.apk | grep 'libbravuzpawn.so'
       - name: Verificar bibliotecas Pawn do APK
         run: |
           unzip -l app/build/outputs/apk/debug/app-debug.apk | grep -E 'lib/(arm64-v8a|armeabi-v7a|x86_64)/libbravuzpawn.so'

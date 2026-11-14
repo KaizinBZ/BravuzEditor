@@ -1,4 +1,4 @@
-name: Publicar versão de teste v0.8
+name: Publicar versão de teste v0.9
 on:
   workflow_dispatch:
 permissions:
@@ -24,5 +24,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk BravuzEditor-v0.8-pawn-beta.apk
-          gh release create v0.8-pawn-beta BravuzEditor-v0.8-pawn-beta.apk --target "$GITHUB_SHA" --title 'BravuzEditor v0.8 — compilador Pawn beta' --notes 'Beta experimental com compilador Pawn 3.10.10 integrado. Build Android compilado no CI; a compilação real .pwn→.amx ainda precisa ser validada em aparelho. Assinatura debug: pode ser preciso fazer backup e desinstalar versões anteriores (isso pode apagar dados). Inclui -Z; forneça os includes SA-MP/plugins junto ao .pwn ou no ZIP da GM. Faça backup e teste num servidor de desenvolvimento. Beta, não release oficial.' --prerelease
+          cp app/build/outputs/apk/debug/app-debug.apk BravuzEditor-v0.9-html-beta.apk
+          gh release create v0.9-html-beta BravuzEditor-v0.9-html-beta.apk --target "$GITHUB_SHA" --title 'BravuzEditor v0.9 — prévia HTML beta' --notes 'Beta experimental: visualizador HTML com CSS/JavaScript local, controles interativos e recursos relativos incluídos no APK/ZIP. Rede externa, navegação externa e acesso à ponte Android estão bloqueados. Arquivos da mesma pasta até 25 MiB são copiados para a prévia. O conversor Pawn também está incluído, ainda pendente de validação .pwn→.amx em dispositivo. Build de teste; assinatura debug, podendo exigir backup e desinstalação da anterior. Não force atualização.' --prerelease

@@ -1,7 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.com.bravuz.editor" android:versionCode="8" android:versionName="0.8-pawn-beta">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.com.bravuz.editor" android:versionCode="9" android:versionName="0.9-html-beta">
  <uses-permission android:name="android.permission.INTERNET" />
  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="28" />
  <application android:label="BravuzEditor" android:icon="@drawable/brand" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false" android:usesCleartextTraffic="false">
+  <activity android:name=".HtmlPreviewActivity" android:exported="false" android:label="Prévia HTML" />
   <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
  </application>
 </manifest>

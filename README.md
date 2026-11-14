@@ -21,3 +21,7 @@ Não aumente as versões em update.json antes de disponibilizar um APK que tenha
 
 ## Conversor Pawn → AMX (v0.8 beta)
 Bundled Pawn Compiler 3.10.10 from pawn-lang/compiler, built for Android via NDK/JNI. Compile `.pwn` files locally, optionally selecting a ZIP containing source and include directories. Output is `.amx`; compilation is not a runtime compatibility guarantee. SA-MP/open.mp and plugin include files need to be supplied in the project ZIP. Compiler uses compatibility mode `-Z`. See `app/src/main/cpp/pawn/LICENSE-pawn.txt` and `README.md` for attribution/license.
+
+
+## HTML preview (v0.9 beta)
+HTML previews run local JavaScript/CSS and browser controls inside an isolated WebView. The preview copies the HTML file and sibling files from its containing archive folder (25 MiB maximum) into app cache. External network requests, external navigation, new windows, geolocation, and access to Android APIs are blocked. Local relative CSS/JS/images/fonts work when included as files. This is a preview sandbox, not a general-purpose browser.
