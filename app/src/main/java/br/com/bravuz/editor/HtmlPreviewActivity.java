@@ -26,6 +26,7 @@ import java.util.Locale;
 /** Isolated local HTML preview: scripts and controls work, network and external navigation do not. */
 public final class HtmlPreviewActivity extends Activity {
     static final String EXTRA_FILE = "br.com.bravuz.editor.HTML_FILE";
+    static final String EXTRA_RUN_SCRIPTS = "br.com.bravuz.editor.HTML_RUN_SCRIPTS";
     private File root;
     private String virtualHost;
     private WebView web;
@@ -49,7 +50,7 @@ public final class HtmlPreviewActivity extends Activity {
         TextView title=new TextView(this);title.setText("Pré-visualização HTML • "+html.getName());title.setTextColor(Color.WHITE);title.setTextSize(14);title.setSingleLine(true);title.setEllipsize(android.text.TextUtils.TruncateAt.END);bar.addView(title,new LinearLayout.LayoutParams(0,-2,1));
         TextView close=new TextView(this);close.setText("Fechar");close.setTextColor(Color.WHITE);close.setTextSize(14);close.setGravity(Gravity.CENTER);bar.addView(close,new LinearLayout.LayoutParams(dp(64),-1));close.setOnClickListener(v->finish());
         web=new WebView(this);layout.addView(web,new LinearLayout.LayoutParams(-1,0,1));
-        WebSettings settings=web.getSettings();settings.setJavaScriptEnabled(true);settings.setDomStorageEnabled(true);settings.setAllowFileAccess(false);settings.setAllowContentAccess(false);settings.setAllowFileAccessFromFileURLs(false);settings.setAllowUniversalAccessFromFileURLs(false);settings.setJavaScriptCanOpenWindowsAutomatically(false);settings.setSupportMultipleWindows(false);settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);settings.setGeolocationEnabled(false);settings.setDatabaseEnabled(false);settings.setLoadsImagesAutomatically(true);settings.setBlockNetworkLoads(true);
+        WebSettings settings=web.getSettings();settings.setJavaScriptEnabled(getIntent().getBooleanExtra(EXTRA_RUN_SCRIPTS,true));settings.setDomStorageEnabled(true);settings.setAllowFileAccess(false);settings.setAllowContentAccess(false);settings.setAllowFileAccessFromFileURLs(false);settings.setAllowUniversalAccessFromFileURLs(false);settings.setJavaScriptCanOpenWindowsAutomatically(false);settings.setSupportMultipleWindows(false);settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);settings.setGeolocationEnabled(false);settings.setDatabaseEnabled(false);settings.setLoadsImagesAutomatically(true);settings.setBlockNetworkLoads(true);
         web.setWebChromeClient(new WebChromeClient(){
             @Override public boolean onJsAlert(WebView view,String url,String message,JsResult result){new android.app.AlertDialog.Builder(HtmlPreviewActivity.this).setMessage(message).setPositiveButton("OK",(d,w)->result.confirm()).setOnCancelListener(d->result.cancel()).show();return true;}
             @Override public boolean onJsConfirm(WebView view,String url,String message,JsResult result){new android.app.AlertDialog.Builder(HtmlPreviewActivity.this).setMessage(message).setPositiveButton("OK",(d,w)->result.confirm()).setNegativeButton("Cancelar",(d,w)->result.cancel()).setOnCancelListener(d->result.cancel()).show();return true;}

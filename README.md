@@ -25,3 +25,6 @@ Bundled Pawn Compiler 3.10.10 from pawn-lang/compiler, built for Android via NDK
 
 ## HTML preview (v0.9 beta)
 HTML previews run local JavaScript/CSS and browser controls inside an isolated WebView. The preview copies the HTML file and sibling files from its containing archive folder (25 MiB maximum) into app cache. External network requests, external navigation, new windows, geolocation, and access to Android APIs are blocked. Local relative CSS/JS/images/fonts work when included as files. This is a preview sandbox, not a general-purpose browser.
+
+
+Beta v0.10: botão Abrir HTML na tela inicial; ao selecionar .html/.htm, o menu oferece Editar código, Visualizar (sem executar JavaScript) e Testar (JavaScript local). CSS/JS/imagens relacionados podem ser importados em ZIP de recursos. A prévia bloqueia conexões externas e não oferece ponte para Android.

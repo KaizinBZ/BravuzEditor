@@ -24,3 +24,6 @@ Código: abra a pasta no Android Studio, com SDK 35 e plugin Gradle. Target SDK 
 Beta experimental v0.8: includes Pawn Compiler 3.10.10 built for Android. Select a .pwn or a ZIP of the GM and its includes, then export the generated .amx. Compilation runs locally; project code is not uploaded. Include directories from the selected .pwn and ZIP are added to Pawn's include search path. Compiler uses -Z compatibility. Does not verify server/plugin compatibility. SA-MP/open.mp plugin includes must be added to the ZIP by the user. Source and output are limited by app/storage limits. Test the .amx on a separate server and keep backups.
 
 Beta v0.9 HTML: preview .html/.htm with CSS/JavaScript, local controls and relative sibling resources. Network/external links and Android bridge access are blocked. Copies sibling files from the same archive folder into cache (up to 25 MiB). Local-only web preview; not a general-purpose browser.
+
+
+Beta v0.10: botão Abrir HTML na tela inicial; ao selecionar .html/.htm, o menu oferece Editar código, Visualizar (sem executar JavaScript) e Testar (JavaScript local). CSS/JS/imagens relacionados podem ser importados em ZIP de recursos. A prévia bloqueia conexões externas e não oferece ponte para Android.

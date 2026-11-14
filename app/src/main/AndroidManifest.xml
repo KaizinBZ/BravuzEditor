@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.com.bravuz.editor" android:versionCode="9" android:versionName="0.9-html-beta">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.com.bravuz.editor" android:versionCode="10" android:versionName="0.10-html-editor-beta">
  <uses-permission android:name="android.permission.INTERNET" />
  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="28" />
  <application android:label="BravuzEditor" android:icon="@drawable/brand" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false" android:usesCleartextTraffic="false">
